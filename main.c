@@ -2,8 +2,8 @@
 
 typedef unsigned char bool;
 
-typedef void (*t_sswap)(void *p1, int index1, int index2);
-typedef bool (*t_greaterThan)(void *p1, int index1, int index2);
+typedef void (*t_sswap)(void *pos, int index1, int index2);
+typedef bool (*t_greaterThan)(void *pos, int index1, int index2);
 
 #define GOTO_INDEX(ttype, startPos, index)                                  \
     ( * ((ttype*) (startPos + index * sizeof(ttype))) )
@@ -18,22 +18,18 @@ typedef bool (*t_greaterThan)(void *p1, int index1, int index2);
 #define DEF_SWAP( type, fooName )                                           \
     void fooName(void* p1, int index1, int index2)                          \
     {                                                                       \
-        type temp = *((type *) (p1 + index2*sizeof(type) ));                \
-        *((type *) (p1 + index2 * sizeof(type) )) =                         \
-        *((type *) (p1 + index1 * sizeof(type) ));                          \
-        *((type *) (p1 + index1 * sizeof(type) )) = temp;                   \
+        type temp = GOTO_INDEX( type, p1, index2 );                         \
+        GOTO_INDEX( type, p1, index2 ) = GOTO_INDEX( type, p1, index1 );    \
+        GOTO_INDEX( type, p1, index1 ) = temp;                              \
     }
 
 #define DEF_PRINT( type, fooName, printfFrmt )                              \
     void fooName(void* p, int index)                                        \
     {                                                                       \
-        printf(printfFrmt, *((type*) (p + index*sizeof(type)) ));           \
+        printf(printfFrmt, GOTO_INDEX( type, p, index ) );                  \
     }
 
-void bubbleSort( void* arr,
-				 int size,
-				 t_greaterThan greaterThan,
-				 t_sswap sswap )
+void bubbleSort(void* arr, int size, t_greaterThan greaterThan, t_sswap sswap)
 {
     for (int i=0;i<size-1; ++i)
     {
@@ -43,10 +39,7 @@ void bubbleSort( void* arr,
     }
 }
 
-void selectionSort( void* arr,
-					int size,
-					t_greaterThan greaterThan,
-					t_sswap sswap  )
+void selectionSort(void* arr, int size, t_greaterThan greaterThan, t_sswap sswap)
 {
     for (int i=0;i<size-1; ++i)
     {

@@ -3,4 +3,4 @@ include_directories(
 )
 
  aux_source_directory(. LIB_SRCS)
- add_library (sortings ${LIB_SRCS})
+ add_library (sortings STATIC ${LIB_SRCS})

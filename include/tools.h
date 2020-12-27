@@ -2,10 +2,10 @@
 
 // Type Definitions
 
-typedef unsigned char bool;
+typedef unsigned char boolean;
 
 typedef void (*t_sswap)(void *, int, int);
-typedef bool (*t_greaterThan)(void *, int, int);
+typedef boolean (*t_greaterThan)(void *, int, int);
 
 
 // Macro Definitions
@@ -14,7 +14,7 @@ typedef bool (*t_greaterThan)(void *, int, int);
     ( * ((ttype*) (startPos + index * sizeof(ttype))) )
 
 #define DEF_GREATER_THAN( type, fooName )                                   \
-    bool fooName(void* p1, int index1, int index2)                          \
+    boolean fooName(void* p1, int index1, int index2)                          \
     {                                                                       \
         return GOTO_INDEX( type, p1, index1 )                               \
              > GOTO_INDEX( type, p1, index2 );                              \

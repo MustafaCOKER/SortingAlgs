@@ -2,6 +2,6 @@
 
 #include "tools.h"
 
-void bubbleSort(void* arr, int size, t_greaterThan greaterThan, t_sswap sswap);
+void bubbleSort(void* arr, size_t size, t_greaterThan greaterThan, t_sswap sswap);
 
-void selectionSort(void* arr, int size, t_greaterThan greaterThan, t_sswap sswap);
+void selectionSort(void* arr, size_t size, t_greaterThan greaterThan, t_sswap sswap);

@@ -1,10 +1,12 @@
 include_directories("${PROJECT_SOURCE_DIR}/include")
+include_directories("${PROJECT_SOURCE_DIR}/test/include")
+
 
 file(GLOB sources "${PROJECT_SOURCE_DIR}/source/*.c")
 list(REMOVE_ITEM sources "${PROJECT_SOURCE_DIR}/source/main.c")
 
-file(GLOB tests "${PROJECT_SOURCE_DIR}/test/*.cpp")
-list(REMOVE_ITEM tests "${PROJECT_SOURCE_DIR}/test/main.cpp")
+file(GLOB tests "${PROJECT_SOURCE_DIR}/test/source/*.cpp")
+list(REMOVE_ITEM tests "${PROJECT_SOURCE_DIR}/test/source/main.cpp")
 
 foreach(file ${tests})
   set(name)
@@ -12,7 +14,7 @@ foreach(file ${tests})
   add_executable("${name}_tests"
     ${sources}
     ${file}
-    "${PROJECT_SOURCE_DIR}/test/main.cpp")
+    "${PROJECT_SOURCE_DIR}/test/source/main.cpp")
   target_link_libraries("${name}_tests" gtest_main)
   add_test(NAME ${name} COMMAND "${name}_tests")
 endforeach()

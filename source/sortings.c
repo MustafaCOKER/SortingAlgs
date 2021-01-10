@@ -2,22 +2,22 @@
 #include "tools.h"
 #include "sortings.h"
 
-void bubbleSort(void* arr, int size, t_greaterThan greaterThan, t_sswap sswap)
+void bubbleSort(void* arr, size_t size, t_greaterThan greaterThan, t_sswap sswap)
 {
-    for (int i=0;i<size-1; ++i)
+    for (size_t i=0;i<size-1; ++i)
     {
-        for (int j=1; j<size-i; ++j)
+        for (size_t j=1; j<size-i; ++j)
             if (greaterThan(arr, j-1, j))
                 sswap(arr, j-1, j);
     }
 }
 
-void selectionSort(void* arr, int size, t_greaterThan greaterThan, t_sswap sswap)
+void selectionSort(void* arr, size_t size, t_greaterThan greaterThan, t_sswap sswap)
 {
-    for (int i=0;i<size-1; ++i)
+    for (size_t i=0;i<size-1; ++i)
     {
-        int selected = i;
-        for (int j=i+1; j<size; ++j)
+        size_t selected = i;
+        for (size_t j=i+1; j<size; ++j)
         {
             if (greaterThan(arr, selected, j))
                 selected = j;

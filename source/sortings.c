@@ -4,11 +4,23 @@
 
 void bubbleSort(void* arr, size_t size, t_greaterThan greaterThan, t_sswap sswap)
 {
+    int sorted = 0;
+
     for (size_t i=0;i<size-1; ++i)
     {
+        if (sorted == 1)
+            break;
+
+        sorted = 1;
+        
         for (size_t j=1; j<size-i; ++j)
             if (greaterThan(arr, j-1, j))
+            {
                 sswap(arr, j-1, j);
+                sorted = 0;
+            }
+        
+        
     }
 }
 

@@ -40,3 +40,18 @@ void recursiveBubbleSort(void* arr, size_t size, t_greaterThan greaterThan, t_ss
 
     recursiveBubbleSort(arr, size-1, greaterThan, sswap);
 }
+
+void insertionSort(void* arr, size_t size, t_greaterThan greaterThan, t_sswap sswap)
+{
+    if (size <= 1)
+        return;
+
+    for (size_t i=1; i<size; ++i)
+    {
+        for (size_t j=i; j>0; --j)
+        {
+            if (greaterThan(arr, j-1, j))
+                sswap(arr, j-1, j);
+        }
+    }
+}

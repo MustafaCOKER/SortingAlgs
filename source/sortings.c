@@ -26,3 +26,17 @@ void selectionSort(void* arr, size_t size, t_greaterThan greaterThan, t_sswap ss
         sswap(arr, selected, i);
     }
 }
+
+void recursiveBubbleSort(void* arr, size_t size, t_greaterThan greaterThan, t_sswap sswap)
+{
+    if (size <= 1)
+        return;
+    
+    for (size_t i=0; i<size-1; ++i)
+    {
+        if (greaterThan(arr, i, i+1))
+            sswap(arr, i, i+1);
+    }
+
+    recursiveBubbleSort(arr, size-1, greaterThan, sswap);
+}

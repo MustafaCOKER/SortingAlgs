@@ -12,7 +12,7 @@ void bubbleSort(void* arr, size_t size, t_greaterThan greaterThan, t_sswap sswap
             break;
 
         sorted = 1;
-        
+
         for (size_t j=1; j<size-i; ++j)
             if (greaterThan(arr, j-1, j))
             {
@@ -65,5 +65,19 @@ void insertionSort(void* arr, size_t size, t_greaterThan greaterThan, t_sswap ss
             if (greaterThan(arr, j-1, j))
                 sswap(arr, j-1, j);
         }
+    }
+}
+
+void recursiveInsertionSort(void* arr, size_t size, t_greaterThan greaterThan, t_sswap sswap)
+{
+    if (size <= 1)
+        return;
+
+    recursiveInsertionSort(arr, size-1, greaterThan, sswap);
+
+    for (size_t i=size-1; i>0; --i)
+    {
+        if (greaterThan(arr, i-1, i))
+            sswap(arr, i-1, i);
     }
 }

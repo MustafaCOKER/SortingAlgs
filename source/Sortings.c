@@ -79,3 +79,18 @@ void recursiveInsertionSort(void *arr, size_t size, t_greaterThan greaterThan, t
             sswap(arr, i - 1, i);
     }
 }
+
+void gnomeSort(void *arr, size_t size, t_greaterThan greaterThan, t_sswap sswap)
+{
+    for (int i = 1; i < size; ++i)
+    {
+        if (i == 0)
+            continue;
+
+        if (greaterThan(arr, i - 1, i))
+        {
+            sswap(arr, i - 1, i);
+            i -= 2;
+        }
+    }
+}

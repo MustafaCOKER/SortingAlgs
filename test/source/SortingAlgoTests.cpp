@@ -93,3 +93,19 @@ TEST(RecursiveInsertionSort, PositiveNos)
     EXPECT_EQ(isEqualArr(varArrDoubleD, varArrDoubleDSorted, TEST_ARR_SIZE, compareItems_double), 1);
     EXPECT_EQ(isEqualArr(varArrFloatD, varArrFloatDSorted, TEST_ARR_SIZE, compareItems_float), 1);
 }
+
+TEST(GnomeSort, PositiveNos)
+{
+    initTestArr();
+    generateTestArr();
+
+    gnomeSort(varArrIntD, TEST_ARR_SIZE, greaterThan_int, swap_int);
+    gnomeSort(varArrCharD, TEST_ARR_SIZE, greaterThan_char, swap_char);
+    gnomeSort(varArrDoubleD, TEST_ARR_SIZE, greaterThan_double, swap_double);
+    gnomeSort(varArrFloatD, TEST_ARR_SIZE, greaterThan_float, swap_float);
+
+    EXPECT_EQ(isEqualArr(varArrIntD, varArrIntDSorted, TEST_ARR_SIZE, compareItems_int), 1);
+    EXPECT_EQ(isEqualArr(varArrCharD, varArrCharDSorted, TEST_ARR_SIZE, compareItems_char), 1);
+    EXPECT_EQ(isEqualArr(varArrDoubleD, varArrDoubleDSorted, TEST_ARR_SIZE, compareItems_double), 1);
+    EXPECT_EQ(isEqualArr(varArrFloatD, varArrFloatDSorted, TEST_ARR_SIZE, compareItems_float), 1);
+}

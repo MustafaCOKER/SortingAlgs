@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-#include "tools.h"
-#include "sortings.h"
+#include "Tools.h"
+#include "Sortings.h"
 
 int main()
 {

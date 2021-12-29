@@ -2,5 +2,5 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/include
 )
 
- aux_source_directory(. LIB_SRCS)
- add_library (sortings STATIC ${LIB_SRCS})
+file(GLOB LIB_SRCS ${PROJECT_SOURCE_DIR}/*.c)
+add_library (sortings STATIC ${LIB_SRCS})
